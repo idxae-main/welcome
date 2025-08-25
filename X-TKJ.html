@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUT RI Ke-80 | X TKJ SMK BINA PUTERA BOGOR</title>
+    <style>
+        :root {
+            --merah: #e70012;
+            --putih: #ffffff;
+            --emas: #FFD700;
+            --biru: #0066cc;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            --gradient-red: linear-gradient(135deg, #e70012, #ff4444);
+            --gradient-blue: linear-gradient(135deg, #0066cc, #4da6ff);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header dengan Logo yang Diperbaiki */
+        header {
+            background: var(--gradient-red);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .logo-container {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--emas);
+            overflow: hidden;
+            background-color: var(--putih);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header-text {
+            text-align: center;
+        }
+
+        .header-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-text h2 {
+            font-size: 1.8rem;
+            color: var(--emas);
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--putih);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            margin: 0;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 15px 25px;
+            text-decoration: none;
+            color: var(--merah);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--merah);
+            color: var(--putih);
+            border-bottom-color: var(--emas);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(231, 0, 18, 0.8), rgba(0, 102, 204, 0.6));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            color: var(--emas);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px var(--emas); }
+            to { text-shadow: 0 0 30px var(--emas), 0 0 40px var(--emas); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            max-width: 800px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Section Styles */
+        .section {
+            background-color: var(--putih);
+            padding: 50px 0;
+            margin: 40px 0;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-title {
+            color: var(--merah);
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-red);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Countdown */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: var(--gradient-red);
+            color: var(--putih);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 120px;
+            box-shadow: var(--shadow);
+            transform: perspective(1000px) rotateY(0deg);
+            transition: transform 0.3s ease;
+        }
+
+        .countdown-item:hover {
+            transform: perspective(1000px) rotateY(10deg) scale(1.05);
+        }
+
+        .countdown-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+            color: var(--emas);
+        }
+
+        .countdown-label {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Guru Profile */
+        .guru-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .guru-card {
+            background: var(--putih);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .guru-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--merah);
+        }
+
+        .guru-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 4px solid var(--merah);
+        }
+
+        .guru-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .guru-name {
+            font-size: 1.5rem;
+            color: var(--merah);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .guru-subject {
+            color: var(--biru);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .guru-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Alumni Section */
+        .alumni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .alumni-card {
+            background: var(--gradient-blue);
+            color: var(--putih);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .alumni-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3);
+        }
+
+        .alumni-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .alumni-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--emas);
+        }
+
+        .alumni-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .alumni-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--emas);
+        }
+
+        .alumni-year {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .alumni-current {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--putih);
+        }
+
+        .alumni-motivation {
+            font-style: italic;
+            line-height: 1.6;
+            position: relative;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid var(--emas);
+        }
+
+        /* Kegiatan Gallery */
+        .kegiatan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .kegiatan-card {
+            background: var(--putih);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .kegiatan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .kegiatan-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .kegiatan-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .kegiatan-card:hover .kegiatan-image img {
+            transform: scale(1.1);
+        }
+
+        .kegiatan-content {
+            padding: 20px;
+        }
+
+        .kegiatan-title {
+            color: var(--merah);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .kegiatan-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Proklamasi */
+        .proklamasi {
+            background: var(--gradient-red);
+            color: var(--putih);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            font-style: italic;
+            margin: 40px 0;
+            position: relative;
+            box-shadow: var(--shadow);
+        }
+
+        .proklamasi:before, .proklamasi:after {
+            content: '"';
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.2);
+            position: absolute;
+            font-family: Georgia, serif;
+        }
+
+        .proklamasi:before {
+            top: 20px;
+            left: 30px;
+        }
+
+        .proklamasi:after {
+            bottom: 20px;
+            right: 30px;
+        }
+
+        .proklamasi p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gradient-red);
+            color: var(--putih);
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--emas);
+        }
+
+        .footer-info {
+            flex: 1;
+            text-align: center;
+        }
+
+        .footer-info h3 {
+            color: var(--emas);
+            margin-bottom: 10px;
+        }
+
+        /* Kelas & Organisasi Section */
+        .kelas-info {
+            background: var(--gradient-blue);
+            color: var(--putih);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .kelas-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid var(--emas);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--emas);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        .organisasi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .organisasi-card {
+            background: var(--putih);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .organisasi-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--merah);
+        }
+
+        .organisasi-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .organisasi-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--merah);
+        }
+
+        .organisasi-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .organisasi-info h3 {
+            color: var(--merah);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .organisasi-role {
+            color: var(--biru);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .organisasi-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .vision-mission {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+
+        .vision-mission h4 {
+            color: var(--merah);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .vision-mission p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .header-text h1 {
+                font-size: 1.5rem;
+            }
+
+            .header-text h2 {
+                font-size: 1.2rem;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-link {
+                text-align: center;
+                border-bottom: 1px solid #eee;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .countdown {
+                gap: 15px;
+            }
+
+            .countdown-item {
+                min-width: 90px;
+                padding: 15px;
+            }
+
+            .countdown-number {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .guru-grid, .alumni-grid, .kegiatan-grid, .organisasi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .kelas-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="logo (1).jpg" alt="Logo SMK Bina Putera Bogor dengan lambang garuda dan warna merah putih yang mencerminkan semangat kemerdekaan Indonesia" />
+                </div>
+                <div class="header-text">
+                    <h1>WELCOME TO</h1>
+                    <h1>KELAS X TEKNIK KOMPUTER DAN JARINGAN</h1>
+                    <h2>SMK BINA PUTERA BOGOR</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#" class="nav-link active" onclick="showSection('beranda')">Beranda</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('kelas')">Kelas & Organisasi</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('guru')">Guru TKJ</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('alumni')">Alumni</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('kegiatan')">Kegiatan</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('proklamasi')">Proklamasi</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <img src="bg.jpg" alt="background merah putih" />
+        <div class="hero-overlay">
+            <h1 class="hero-title">HUT REPUBLIK INDONESIA KE-80</h1>
+            <p class="hero-subtitle">"Bersatu, Bangkit, dan Tumbuh dalam Semangat Kemerdekaan"</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Beranda Section -->
+        <section id="beranda" class="section active">
+            <h2 class="section-title">Menuju Perayaan HUT RI-80</h2>
+            
+            <div class="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">Hari</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Jam</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Menit</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Detik</span>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding: 30px; background-color: #f8f9fa; border-radius: 15px; margin-top: 40px;">
+                <h3 style="color: var(--merah); margin-bottom: 20px; font-size: 1.8rem;">Tentang Kelas X TKJ</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #555; max-width: 800px; margin: 0 auto;">
+                    Kelas X Teknik Komputer dan Jaringan SMK Bina Putera Bogor adalah rumah bagi calon-calon teknisi handal di bidang IT. 
+                    Kami berkomitmen untuk mencetak generasi yang siap menghadapi tantangan era digital dengan semangat kemerdekaan 
+                    dan jiwa nasionalisme yang tinggi. Melalui pembelajaran yang berkualitas dan kegiatan yang beragam, 
+                    kami mempersiapkan siswa menjadi SDM unggul untuk Indonesia yang lebih maju.
+                </p>
+            </div>
+        </section>
+
+        <!-- Kelas & Organisasi Section -->
+        <section id="kelas" class="section">
+            <h2 class="section-title">Kelas X TKJ & Organisasi</h2>
+            
+            <div class="kelas-info">
+                <h3 style="color: var(--emas); font-size: 2rem; margin-bottom: 20px; text-align: center;">Profil Kelas X TKJ</h3>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;">
+                    Kelas X TKJ SMK Bina Putera Bogor terdiri dari siswa-siswa berbakat yang siap menjadi ahli di bidang teknologi informasi. 
+                    Dengan semangat kemerdekaan, kami membangun karakter disiplin, kreatif, dan mandiri. 
+                </p>
+
+                <div class="kelas-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">44</span>
+                        <span class="stat-label">Siswa</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Rombel</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Mata Pelajaran Produktif</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Program Unggulan</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; color: var(--merah); margin-bottom: 30px; font-size: 1.8rem;">Struktur Organisasi Kelas</h3>
+            <div class="organisasi-grid">
+                <div class="organisasi-card">
+                    <div class="organisasi-header">
+                        <div class="organisasi-photo">
+                            <img src="faiz.jpeg" alt="Foto ketua kelas X TKJ">
+                        </div>
+                        <div class="organisasi-info">
+                            <h3>M. Faiz Ramdani</h3>
+                            <p class="organisasi-role">Ketua Kelas</p>
+                        </div>
+                    </div>
+                    <p class="organisasi-description">
+                        Bertanggung jawab atas kepemimpinan kelas dan koordinasi seluruh kegiatan belajar mengajar.
+                        Membantu guru dalam menyampaikan informasi penting kepada seluruh siswa.
+                    </p>
+                </div>
+
+                <div class="organisasi-card">
+                    <div class="organisasi-header">
+                        <div class="organisasi-photo">
+                            <img src="raditya.jpeg" alt="Foto wakil ketua kelas X TKJ">
+                        </div>
+                        <div class="organisasi-info">
+                            <h3>Raditya Anandyas A</h3>
+                            <p class="organisasi-role">Wakil Ketua</p>
+                        </div>
+                    </div>
+                    <p class="organisasi-description">
+                        asisten utama ketua kelas yang membantu mengelola tugas-tugas kelas, 
+                        menggantikan ketua kelas saat berhalangan, memberikan saran dan masukan kepada ketua kelas,
+                        serta memantau dan mengoordinasikan kegiatan kelas.
+                    </p>
+                </div>
+
+
+                <div class="organisasi-card">
+                    <div class="organisasi-header">
+                        <div class="organisasi-photo">
+                            <img src="layla.jpeg" alt="Foto sekretaris kelas X TKJ">
+                        </div>
+                        <div class="organisasi-info">
+                            <h3>Nazma Layla M</h3>
+                            <p class="organisasi-role">Sekretaris</p>
+                        </div>
+                    </div>
+                    <p class="organisasi-description">
+                        Menangani administrasi kelas termasuk dokumentasi absensi dan kegiatan belajar. 
+                        Membuat laporan bulanan kegiatan kelas dan bertanggung jawab atas arsip penting.
+                    </p>
+                </div>
+
+                <div class="organisasi-card">
+                    <div class="organisasi-header">
+                        <div class="organisasi-photo">
+                            <img src="karisa.jpeg" alt="Foto bendahara kelas X TKJ">
+                        </div>
+                        <div class="organisasi-info">
+                            <h3>Feby Karisa Azzahwa</h3>
+                            <p class="organisasi-role">Bendahara</p>
+                        </div>
+                    </div>
+                    <p class="organisasi-description">
+                        Mengelola keuangan kelas dan bertanggung jawab atas transparansi penggunaan dana kas kelas.
+                        Membuat laporan keuangan bulanan yang akuntabel.
+                    </p>
+                </div>
+
+                <div class="organisasi-card">
+                    <div class="organisasi-header">
+                        <div class="organisasi-photo">
+                            <img src="khaira.jpeg" alt="Foto bendahara kelas X TKJ">
+                        </div>
+                        <div class="organisasi-info">
+                            <h3>Khaira Dwi Juliani</h3>
+                            <p class="organisasi-role">Keamanan</p>
+                        </div>
+                    </div>
+                    <p class="organisasi-description">
+                    Menciptakan lingkungan kelas yang aman, nyaman, dan kondusif untuk belajar, 
+                    serta menumbuhkan kesadaran akan pentingnya menjaga keamanan dan ketertiban.
+                    Menegakkan aturan kelas, membantu menjaga ketertiban selama kegiatan belajar mengajar,
+                     serta menjadi contoh bagi siswa lain dalam berperilaku disiplin dan bertanggung jawab. 
+                    </p>
+                </div>
+            </div>
+            </div>
+
+            <div class="vision-mission">
+                <h4 style="color: var(--merah);">Visi Kelas X TKJ</h4>
+                <p>
+                    "Membentuk siswa yang kompeten di bidang teknologi informasi dengan karakter disiplin, kreatif, dan berjiwa pemimpin"
+                </p>
+                
+                <h4 style="color: var(--merah); margin-top: 30px;">Misi Kelas X TKJ</h4>
+                <p>1. Mengembangkan keterampilan teknik komputer dan jaringan yang relevan dengan kebutuhan industri</p>
+                <p>2. Membangun karakter siswa yang berintegritas dan bertanggung jawab</p>
+                <p>3. Meningkatkan kolaborasi dan kerjasama tim dalam setiap kegiatan</p>
+                <p>4. Mengoptimalkan potensi siswa melalui berbagai program unggulan</p>
+            </div>
+        </section>
+
+        <!-- Guru Section -->
+        <section id="guru" class="section">
+            <h2 class="section-title">Guru Produktif TKJ</h2>
+            <div class="guru-grid">
+                 <div class="guru-card">
+                    <div class="guru-photo">
+                        <img src="pak helmi.jpeg" alt="Foto guru TKJ pria berusia 35 tahun dengan kemeja formal biru, tersenyum ramah, background studio profesional" />
+                    </div>
+                    <h3 class="guru-name">Bapak Helmi Permana A.md.Se</h3>
+                    <p class="guru-subject">Guru Produktif Komputer dan Jaringan Dasar</p>
+                    <p class="guru-description">
+                        TKJ  adalah  jurusan yang sangat di butuhkan  dalam dunia kerja.
+                        Jangan pernah takut untuk melangkah untuk meraih masa depan.
+                        Masa depan yang menentukan adalah kita sendiri.
+                        proses yang sulit akan membuat kita menjadi kuat dan mandiri.
+                        Tetap belajar dalam kondisi sulit apa pun
+                    </p>
+                </div>
+                 <div class="guru-card">
+                    <div class="guru-photo">
+                        <img src="pa marwin.jpeg" alt="Foto pa marwin" />
+                    </div>
+                    <h3 class="guru-name">Bapak Marwin Naryanto s.kom</h3>
+                    <p class="guru-subject">Guru Produktif Sistem Komputer (Siskom), Pemrograman Dasar (Progdas)</p>
+                    <p class="guru-description">
+                       Pembelajaran yang Berhasil Bukan hanya Pembelajaran yang diraih dari proses belajar 
+                       tanpa kendala namun sebaliknya, karena Pembelajaran yang berhasil adalah Pembelajaran 
+                       yg harus menemukan kegagalan & bagaimana cara untuk menghadapi kegagalan itu.
+                    </p>
+                </div>
+
+               <div class="guru-card">
+                    <div class="guru-photo">
+                        <img src="pa pur.jpeg" alt="Foto pak purnawan" />
+                    </div>
+                    <h3 class="guru-name">Bapak Purnawarman Rizkia, S.Pd.</h3>
+                    <p class="guru-subject">Guru Produktif Administrasi Sistem Jaringan</p>
+                    <p class="guru-description">
+                        Setia pada hal kecil untuk dipercaya hal yang besar karena ilmu adalah mata uang masa depan
+                    </p>
+                </div>
+                
+                <div class="guru-card">
+                    <div class="guru-photo">
+                        <img src="pa mamun.jpeg" alt="poto pak ma'mun" />
+                    </div>
+                    <h3 class="guru-name">Bapak Ma'mun SE</h3>
+                    <p class="guru-subject">Guru Produktif Informatika</p>
+                    <p class="guru-description">
+                        Hidup penuh perjuangan, jangan hidup kalau tidak mau berjuang, semangat belajar. 
+                        Setiap langkah maju adalah kemenangan, bahkan jika itu kecil. Belajar dari setiap 
+                        kegagalan, jadikan tantangan sebagai tangga menuju sukses, 
+                        dan teruslah berkembang. Masa depanmu adalah hasil dari tekadmu hari ini.
+                    </p>
+                </div>
+
+                 <div class="guru-card">
+                    <div class="guru-photo">
+                        <img src="pak rifai.jpeg" alt="poto pa rifai"/>
+                    </div>
+                    <h3 class="guru-name">Bapak Ahmad Rifai A.Md</h3>
+                    <p class="guru-subject">Guru Produktif Desain Grafis</p>
+                    <p class="guru-description">
+                       Jadikan Keluarga sebagai Inspirasi "Keluarga mungkin sederhana, 
+                       tetapi kasih sayang dan dukungan mereka adalah permata berharga. 
+                       Jadikan mereka sebagai inspirasi untuk terus berjuang dan capai impianmu. 
+                       Kejayaanmu adalah hadiah terindah untuk mereka."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alumni Section -->
+        <section id="alumni" class="section">
+            <h2 class="section-title">Alumni TKJ Berprestasi</h2>
+            <div class="alumni-grid">
+                <div class="alumni-card">
+                    <div class="alumni-header">
+                        <div class="alumni-photo">
+                            <img src="bilqis.jpeg" alt="Foto alumni TKJ SMK Bina Putera Bogor" />
+                        </div>
+                        <div class="alumni-info">
+                            <h3>Andini Bilqis Janiah </h3>
+                            <p class="alumni-year">Lulusan 2024</p>
+                            <p class="alumni-current">Mendalami teknologi seperti Cisco ISE, Nmap, dan lainnya.</p>
+                        </div>
+                    </div>
+                    <div class="alumni-motivation">
+                       TKJ adalah paspor menuju dunia digital tanpa batas.
+                       Kabel, server, dan konfigurasi hanyalah alat—senjata sesungguhnya ada di pikiran yang mau belajar dan tangan yang berani mencoba.
+                       Dulu, saya hanyalah node kecil di jaringan besar ini. Sekarang, saya tahu setiap langkah, setiap konfigurasi, membawa saya lebih dekat pada main server impian saya.
+                       Jangan hanya jadi user di hidupmu, jadilah administrator masa depanmu.
+                    </div>
+                </div>
+
+                 <div class="alumni-card">
+                    <div class="alumni-header">
+                        <div class="alumni-photo">
+                            <img src="diki.jpeg" alt="Foto alumni TKJ SMK Bina Putera Bogor" />
+                        </div>
+                        <div class="alumni-info">
+                            <h3>Diki Amrizal </h3>
+                            <p class="alumni-year">Lulusan SMK Bina Putera Bogor</p>
+                            <p class="alumni-current">Bekerja sebagai IT  Network dan Server</p>
+                        </div>
+                    </div>
+                    <div class="alumni-motivation">
+                       Explore lebih dalam lagi kemampuanmu, ikut andil dalam kemajuan digitalisasi, dan jadilah ahli di bidang yang kamu tekuni.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Kegiatan Section -->
+        <section id="kegiatan" class="section">
+            <h2 class="section-title">Kegiatan Kelas X-TKJ</h2>
+            <div class="kegiatan-grid">
+
+                 <div class="kegiatan-card">
+                    <div class="kegiatan-image">
+                        <img src="profil.jpeg" alt="poto saat selesai upacara hut ri-80" />
+                    </div>
+                    <div class="kegiatan-content">
+                        <h3 class="kegiatan-title">Upacara HUT RI KE 80</h3>
+                        <p class="kegiatan-description">
+                            Murid-murid mengikuti upacara HUT RI ke-80. Mereka juga menghargai perjuangan pahlawan, 
+                            mengikuti rangkaian acara seperti pembacaan teks UUD 1945 dan serta turut doa bersama, serta 
+                            dalam lomba tradisional dan pertunjukan yang menambah semarak perayaan. 
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="kegiatan-card">
+                    <div class="kegiatan-image">
+                        <img src="hias.jpeg" alt="poto saat menghias kelas" />
+                    </div>
+                    <div class="kegiatan-content">
+                        <h3 class="kegiatan-title">Menghias Kelas</h3>
+                        <p class="kegiatan-description">
+                        Dekorasi yang dibuat siswa bertujuan untuk meningkatkan minat dan kreativitas mereka, 
+                        serta membuat siswa merasa lebih senang dan terhubung dengan kelasnya. 
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="kegiatan-card">
+                    <div class="kegiatan-image">
+                        <img src="belajar.jpg" alt="poto saat belajar di kelas" />
+                    </div>
+                    <div class="kegiatan-content">
+                        <h3 class="kegiatan-title">Mengikuti Pembelajaran Sekolah</h3>
+                        <p class="kegiatan-description">
+                        mencakup perilaku positif seperti fokus, disiplin, dan rasa ingin tahu yang tinggi, 
+                        serta upaya yang dilakukan seperti menindaklanjuti 
+                        instruksi guru, berinteraksi dengan teman sebaya, dan menunjukkan tanggung jawab dalam belajar.  
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Proklamasi Section -->
+        <section id="proklamasi" class="section">
+            <h2 class="section-title">Dokumen Bersejarah</h2>
+            <div class="proklamasi">
+                <h3 style="font-size: 2rem; margin-bottom: 30px; color: var(--emas);">PROKLAMASI</h3>
+                <p>Kami bangsa Indonesia dengan ini menjatakan kemerdekaan Indonesia.</p>
+                <p>Hal-hal jang mengenai pemindahan kekoeasaan d.l.l., diselenggarakan</p>
+                <p>dengan tjara seksama dan dalam tempo jang sesingkat-singkatnja.</p>
+                <p style="margin-top: 30px; font-weight: bold;">Djakarta, hari 17 boelan 8 tahoen 1945</p>
+                <p style="margin-top: 20px;">Atas nama bangsa Indonesia</p>
+                <p style="font-size: 1.3rem; font-weight: bold; color: var(--emas);">Soekarno/Hatta</p>
+            </div>
+            
+            <div style="text-align: center; padding: 40px; background-color: #f8f9fa; border-radius: 15px; margin-top: 40px;">
+                <h3 style="color: var(--merah); margin-bottom: 20px; font-size: 1.8rem;">Makna Kemerdekaan bagi TKJ</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #555; max-width: 800px; margin: 0 auto;">
+                    Sebagai generasi penerus bangsa di era digital, siswa TKJ SMK Bina Putera berkomitmen untuk meneruskan 
+                    perjuangan para pahlawan dengan cara mengembangkan teknologi untuk kemajuan Indonesia. Kemerdekaan bagi kami 
+                    adalah kebebasan untuk berinovasi, berkreasi, dan memberikan kontribusi nyata bagi bangsa melalui teknologi 
+                    informasi dan komunikasi.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <img src="logo (1).jpg" alt="Logo SMK Bina Putera Bogor dengan detail lambang sekolah dan tulisan SMK Bina Putera" class="footer-logo" />
+                <div class="footer-info">
+                    <h3>KELAS X TKJ SMK BINA PUTERA BOGOR</h3>
+                    <p>Jalan Pengairan Katulampa, RT.01/RW.09, Katulampa, Kec. Bogor Tim., Kota Bogor, Jawa Barat 16144</p>
+                    <p>Telp: (0251) 123456 | Email: X-TKJ@smkbinaputera-bogor.sch.id</p>
+                    <p style="margin-top: 15px; color: var(--emas);">DIRGAHAYU REPUBLIK INDONESIA KE-80 </p>
+                </div>
+                <img src="x.jpeg" />
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.add('active');
+            
+            // Update navigation active state
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Countdown to Indonesia Independence Day (August 27th)
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const currentYear = new Date().getFullYear();
+            let targetDate = new Date(currentYear, 7, 27, 10); // August 27th (month is 0-indexed)
+            
+            // If this year's independence day has passed, target next year
+            if (now > targetDate.getTime()) {
+                targetDate = new Date(currentYear, 7, 27);
+            }
+            
+            const distance = targetDate.getTime() - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+            }
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+
+        // Smooth scrolling animation for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply animation to cards when page loads
+        window.addEventListener('load', () => {
+            const cards = document.querySelectorAll('.guru-card, .alumni-card, .kegiatan-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                observer.observe(card);
+            });
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.countdown-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'perspective(1000px) rotateY(10deg) scale(1.05)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(1000px) rotateY(0deg) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
+
